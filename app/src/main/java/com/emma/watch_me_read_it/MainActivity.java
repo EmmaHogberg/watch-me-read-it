@@ -15,7 +15,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +23,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.mlkit.vision.common.InputImage;
 import com.google.mlkit.vision.text.Text;
@@ -36,8 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int PERMISSION_CODE = 1000;
     private ImageView imageView;
-    private Button captureButton;
-    private Button detectTextButton;
+    private FloatingActionButton captureButton;
     private TextView textView;
     private InputImage image;
     private BottomNavigationView navigationView;
@@ -53,8 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set variables
         imageView = (ImageView) findViewById(R.id.imageView);
-        captureButton = (Button) findViewById(R.id.captureImageButton);
-        detectTextButton = (Button) findViewById(R.id.detectTextButton);
+        captureButton = (FloatingActionButton) findViewById(R.id.readTextButton);
         textView = (TextView) findViewById(R.id.detectedTextView);
         navigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -63,12 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
                 if (item.getItemId() == R.id.textToSpeech) {
 
-                        Intent speechIntent = new Intent(MainActivity.this, TextToSpeechActivity.class);
-                        speechIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(speechIntent);
-                        finish();
+                    Intent speechIntent = new Intent(MainActivity.this, TextToSpeechActivity.class);
+                    speechIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(speechIntent);
+                    finish();
 
-                        return true;
+                    return true;
                 }
                 return false;
             }
@@ -185,16 +183,3 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

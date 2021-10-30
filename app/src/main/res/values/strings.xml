@@ -1,11 +1,15 @@
 <resources>
+
+    // Main activity
     <string name="app_name">Watch me read it</string>
-    <string name="captureImageButton">Capture Image</string>
-    <string name="detectTextButton">Detect Text</string>
-    <string name="processTextButton">Process Text</string>
+    <string name="actionButton">Take a new photo</string>
+
+    // TextToSpeech activity
+    <string name="readTextButton">Read text</string>
+    <string name="editSpeechText">Edit text to speak...</string>
+
+    // Bottom navigation menu
     <string name="imageToText">Image to Text</string>
     <string name="textToSpeech">Text to Speech</string>
-
-    <string name="editSpeechText">Edit text to speech...</string>
 
 </resources>
