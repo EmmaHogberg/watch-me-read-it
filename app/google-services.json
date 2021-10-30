@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "787677333714",
+    "project_id": "watch-me-read-it",
+    "storage_bucket": "watch-me-read-it.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787677333714:android:856a94bc0e3c4db2c2050b",
+        "android_client_info": {
+          "package_name": "com.emma.watch_me_read_it"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787677333714-1akti0i6gqtaagvhth0jttc12koaa7jv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUi60tbBhMdP-sZmhgzkcbdgEYcHx16fs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787677333714-1akti0i6gqtaagvhth0jttc12koaa7jv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

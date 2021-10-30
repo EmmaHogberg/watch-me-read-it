@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/imageToText"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_image_24"
+        android:title="@string/imageToText" />
+    <item
+        android:id="@+id/textToSpeech"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_media_play"
+        android:title="@string/textToSpeech" />
+
+</menu>
