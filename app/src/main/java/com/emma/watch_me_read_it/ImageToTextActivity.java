@@ -4,7 +4,6 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.Intent;
@@ -13,18 +12,14 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.mlkit.vision.common.InputImage;
 import com.google.mlkit.vision.text.Text;
 import com.google.mlkit.vision.text.TextRecognition;
@@ -32,14 +27,15 @@ import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
 
-public class MainActivity extends AppCompatActivity {
+public class ImageToTextActivity extends AppActivity implements View.OnClickListener{
 
     private static final int PERMISSION_CODE = 1000;
+    public static final String EXTRA_MESSAGE = "com.emma.watch_me_read_it.MESSAGE";
     private ImageView imageView;
     private FloatingActionButton captureButton;
     private TextView textView;
     private InputImage image;
-    private BottomNavigationView navigationView;
+
     private String text = "";
     ActivityResultLauncher<Intent> activityResultLauncher;
 
@@ -47,31 +43,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(0, 0);
         setContentView(R.layout.activity_main);
+        createNavigationBar(R.id.imageToText);
 
 
         // Set variables
         imageView = (ImageView) findViewById(R.id.imageView);
         captureButton = (FloatingActionButton) findViewById(R.id.readTextButton);
         textView = (TextView) findViewById(R.id.detectedTextView);
-        navigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-        navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
 
-                if (item.getItemId() == R.id.textToSpeech) {
-
-                    Intent speechIntent = new Intent(MainActivity.this, TextToSpeechActivity.class);
-                    speechIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(speechIntent);
-                    finish();
-
-                    return true;
-                }
-                return false;
-            }
-        });
-
+        // CaptureButton click listener
+        captureButton.setOnClickListener(this);
 
         activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
 
@@ -86,39 +69,35 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-        // CaptureButton click listener
-        captureButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // If system os is >=marshmallow, request runtime permission
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (checkSelfPermission(Manifest.permission.CAMERA) ==
-                            PackageManager.PERMISSION_DENIED ||
-                            checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                                    PackageManager.PERMISSION_DENIED) {
-
-                        // Permission not enabled, request it
-                        String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                        // Show popup to request permissions
-                        requestPermissions(permission, PERMISSION_CODE);
-
-                    } else {
-                        // Permission already granted
-                        dispatchTakePictureIntent();
-                    }
-                } else {
-
-                    // System os < marshmallow
-                    dispatchTakePictureIntent();
-                }
-            }
-        });
     }
 
 
+
+    @Override
+    public void onClick(View v) {
+        // If system os is >=marshmallow, request runtime permission
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.CAMERA) ==
+                    PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                            PackageManager.PERMISSION_DENIED) {
+
+                // Permission not enabled, request it
+                String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                // Show popup to request permissions
+                requestPermissions(permission, PERMISSION_CODE);
+
+            } else {
+                // Permission already granted
+                dispatchTakePictureIntent();
+            }
+        } else {
+
+            // System os < marshmallow
+            dispatchTakePictureIntent();
+        }
+
+    }
 
 
     // Take picture intent
@@ -127,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         if (intent.resolveActivity(getPackageManager()) != null) {
             activityResultLauncher.launch(intent);
         } else {
-            Toast.makeText(MainActivity.this, "There is no app that support this action",
+            Toast.makeText(ImageToTextActivity.this, "There is no app that support this action",
                     Toast.LENGTH_SHORT).show();
         }
     }
@@ -154,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                                 new OnFailureListener() {
                                     @Override
                                     public void onFailure(Exception e) {
-                                        Toast.makeText(MainActivity.this, "Something went wrong, please try again",
+                                        Toast.makeText(ImageToTextActivity.this, "Something went wrong, please try again",
                                                 Toast.LENGTH_SHORT).show();
                                     }
                                 });

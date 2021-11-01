@@ -1,6 +1,10 @@
 <resources>
 
-    // Main activity
+    // Home Activity
+    <string name="textViewOne">Welcome to the</string>
+    <string name="textViewTwo">Watch Me Read It app</string>
+
+    // ImageToText activity
     <string name="app_name">Watch me read it</string>
     <string name="actionButton">Take a new photo</string>
 
@@ -11,5 +15,6 @@
     // Bottom navigation menu
     <string name="imageToText">Image to Text</string>
     <string name="textToSpeech">Text to Speech</string>
+    <string name="Home">Home</string>
 
 </resources>
