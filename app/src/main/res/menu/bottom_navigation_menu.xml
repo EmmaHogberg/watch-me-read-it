@@ -3,14 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/about"
+        android:id="@+id/homeStart"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_home_300"
-        android:title="@string/Home" />
+        android:title="@string/homeStart" />
 
     <item
         android:id="@+id/imageToText"
-        android:checkable="false"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_image_24"
         android:title="@string/imageToText"
@@ -20,6 +19,5 @@
         android:enabled="true"
         android:icon="@android:drawable/ic_media_play"
         android:title="@string/textToSpeech" />
-
 
 </menu>

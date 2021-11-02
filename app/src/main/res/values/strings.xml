@@ -1,20 +1,23 @@
 <resources>
 
+    // Appname
+    <string name="app_name">Watch me read it</string>
+
     // Home Activity
     <string name="textViewOne">Welcome to the</string>
     <string name="textViewTwo">Watch Me Read It app</string>
 
     // ImageToText activity
-    <string name="app_name">Watch me read it</string>
-    <string name="actionButton">Take a new photo</string>
+    <string name="takePhotoButton">Take a new photo</string>
 
     // TextToSpeech activity
     <string name="readTextButton">Read text</string>
-    <string name="editSpeechText">Edit text to speak...</string>
+    <string name="editSpeechText">Edit text...</string>
 
     // Bottom navigation menu
+    <string name="homeStart">Home</string>
     <string name="imageToText">Image to Text</string>
     <string name="textToSpeech">Text to Speech</string>
-    <string name="Home">Home</string>
+
 
 </resources>
