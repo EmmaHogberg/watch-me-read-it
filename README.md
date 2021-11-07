@@ -1,6 +1,9 @@
 # watch-me-read-it
 Project in the course mobile development with Java
 
+![Watch Me Read It](https://user-images.githubusercontent.com/70634183/140651293-79824944-7eca-4805-aef2-4e9aad2879c6.png)
+
+
 I slutprojekt: Sprint , så har ni en två veckors sprint på att planera och bygga en av projekten här under:
 - Firebase konto med en öppen chatt. Använd Firebase för att låta er app skapa ett konto, minst två olika personer kan logga och skriva meddelade i en chatt liknande funktion. Obs ni måste inte kunna skapa nya konton, det går bra ett två statiska konton.
 - Översättnings bank med Google translate. Använd Google Speech-to-Text api för att generera text som sen ska kunna översättas och spara både original och översatt text.
